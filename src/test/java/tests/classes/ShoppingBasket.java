@@ -16,7 +16,9 @@ public class ShoppingBasket {
 
     public Map<Book, Integer> changeQuantity(Book book, int count){
         if( books.containsKey(book)){
+            book.setDiscPrice(count * book.getDiscPrice());
             books.put(book, count);
+
         }
 
         return books;
@@ -29,15 +31,6 @@ public class ShoppingBasket {
 
         }
     }
-
-//    public void printAllBooksInBasket() {
-//        List<Book> listOfBooks = new ArrayList<Book>();
-//        listOfBooks.addAll(books.keySet());
-//
-//        for(Book item: listOfBooks){
-//            System.out.println(item);
-//        }
-//    }
 
     public double getBasketTotalPrice() {
        double totalPrice = 0.0;

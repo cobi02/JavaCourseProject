@@ -116,6 +116,11 @@ public class LectureMethods {
 
         basket.printAllBooksInBasket();
 
+        System.out.printf("%n----------test2 TotalPriceInBasket-----------------%n");
+
+        double totalPrice = basket.getBasketTotalPrice();
+        System.out.printf("The total price in the basket is: %.2f", totalPrice);
+
         System.out.printf("%n------------------------------%n");
 
     }
