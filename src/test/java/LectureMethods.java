@@ -1,8 +1,6 @@
 import org.testng.annotations.Test;
-import tests.classes.Book;
-import tests.classes.ShoppingBasket;
-import tests.classes.Store;
-import tests.classes.Search;
+import tests.classes.*;
+
 import java.util.*;
 
 
@@ -122,6 +120,67 @@ public class LectureMethods {
         System.out.printf("The total price in the basket is: %.2f", totalPrice);
 
         System.out.printf("%n------------------------------%n");
+
+    }
+
+    @Test(priority = 3)
+    public void addUsersAndBooksInBaskets(){
+        Store store = createStore();
+        addBooksInStore(store, getlistOfBooks());
+        Search search = new Search();
+
+        // create users
+        User user1 = new User("John", "Smith");
+
+        User user2 = new User();
+        user2.setName("David");
+        user2.setLastName("Murphy");
+
+        // book with lowest original price
+        Book foundBook1 = search.getBookWithLowestPriceById(0, search.sortBookListByPrice(store.getInStock()));
+        System.out.println(foundBook1);
+
+
+        System.out.printf("%n-----------test3 addBooksForUser1-------------------%n");
+
+        // book with biggest discounted price
+        Book foundBook2 = search.getBookWithLowestDiscPriceByID(store.getInStock().size()-1, search.sortBookListByDiscPrice(store.getInStock()));
+        System.out.println(foundBook2);
+
+
+
+        user1.getBasket().getBooks().put(foundBook1, 1);
+
+        System.out.printf("%nThe book with lowest title words was added in User1's basket %n");
+
+        user1.getBasket().getBooks().put(foundBook2, 1);
+
+        System.out.printf("%nThe book with biggest discounted price was added in User1's basket%n");
+
+
+
+        System.out.printf("%n-----------test3 addBooksForUser2-------------------%n");
+
+        //book with lowest title words count
+        Book foundBook3 = search.getBookWithLessTitleWords(search.sortBookListByTitleWordsCount(store.getInStock()));
+
+        System.out.println(foundBook3);
+
+ //       user2.getBasket().getBooks().put(foundBook3, 1);
+
+//        System.out.printf("The book with lowest title words was added in User1 basket");
+//
+//        user2.getBasket().changeQuantity(foundBook3, 5);
+//
+//
+//        user1.getBasket().printAllBooksInBasket();
+//
+//        user1.getBasket().printAllBooksInBasket();
+
+
+
+
+
 
     }
     }
