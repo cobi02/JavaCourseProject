@@ -1,6 +1,6 @@
 package tests.classes;
 import java.util.*;
-import java.util.Map;
+
 public class ShoppingBasket {
    public Map<Book, Integer> books = new HashMap<Book, Integer>() ;
 

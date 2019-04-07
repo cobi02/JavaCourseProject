@@ -88,9 +88,13 @@ public class LectureMethods {
         Search search = new Search();
         ShoppingBasket basket = new ShoppingBasket();
 
+        int index = 0;
+        List<Book> sortedList = new ArrayList<Book>();
+
         System.out.printf("%n----------test2 addBookWithShortestTitle-----------------%n");
 
-        Book foundBook1 = search.getBookWithShortestTitle(search.sortBookListByTitleLength(store.getInStock()));
+        sortedList = search.sortBookListByTitleLength(store.getInStock());
+        Book foundBook1 = search.getBookWithShortestTitle(sortedList);
         basket.addBookInBasket(foundBook1, 1);
 
         System.out.printf("The book with shortest title is added in the basket  %nNow we have in the basket:  %n");
@@ -99,7 +103,9 @@ public class LectureMethods {
 
         System.out.printf("%n----------test2 addBookWithBiggestPrice -----------------%n");
 
-        Book foundBook2 = search.getBookWithLowestDiscPriceByID(store.getInStock().size()-1, search.sortBookListByDiscPrice(store.getInStock()));
+        index = store.getInStock().size()-1;
+        sortedList = search.sortBookListByDiscPrice(store.getInStock());
+        Book foundBook2 = search.getBookWithLowestDiscPriceByID(index, sortedList);
         basket.addBookInBasket(foundBook2, 1);
 
         System.out.printf("The book with biggest discounted price is added in the basket! %nNow we have in the basket:  %n");
@@ -129,6 +135,9 @@ public class LectureMethods {
         addBooksInStore(store, getlistOfBooks());
         Search search = new Search();
 
+        int index = 0;
+        List<Book> sortedList = new ArrayList<Book>();
+
         // create users
         User user1 = new User("John", "Smith");
 
@@ -140,7 +149,9 @@ public class LectureMethods {
         System.out.printf("%n-----------test3 addBooksForUser1-------------------%n");
 
         // book with lowest original price
-        Book foundBook1 = search.getBookWithLowestPriceById(0, search.sortBookListByPrice(store.getInStock()));
+        index = 0;
+        sortedList = search.sortBookListByPrice(store.getInStock());
+        Book foundBook1 = search.getBookWithLowestPriceById(index,sortedList );
         System.out.println("The book with lowest original price is: ");
         System.out.println(foundBook1);
 
@@ -153,7 +164,9 @@ public class LectureMethods {
         System.out.printf("%n------------------------------%n");
 
         // book with biggest discounted price
-        Book foundBook2 = search.getBookWithLowestDiscPriceByID(store.getInStock().size()-1, search.sortBookListByDiscPrice(store.getInStock()));
+        index = store.getInStock().size()-1;
+        sortedList = search.sortBookListByDiscPrice(store.getInStock());
+        Book foundBook2 = search.getBookWithLowestDiscPriceByID(index, sortedList);
         System.out.println("The book with biggest discounted price is: ");
         System.out.println(foundBook2);
 
@@ -171,7 +184,8 @@ public class LectureMethods {
         System.out.printf("%n-----------test3 addBooksForUser2-------------------%n");
 
         //book with lowest title words count
-        Book foundBook3 = search.getBookWithLessTitleWords(search.sortBookListByTitleWordsCount(store.getInStock()));
+        sortedList = search.sortBookListByTitleWordsCount(store.getInStock());
+        Book foundBook3 = search.getBookWithLessTitleWords(sortedList);
 
         System.out.printf("%nBook list sorted by title words count:%n");
         System.out.println(search.sortBookListByTitleWordsCount(store.getInStock()));

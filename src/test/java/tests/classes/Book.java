@@ -1,5 +1,4 @@
 package tests.classes;
-import java.util.*;
 
 public class Book {
     private String title;
