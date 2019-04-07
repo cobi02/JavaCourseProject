@@ -14,7 +14,7 @@ public class LectureMethods {
     }
     public List<Book> getlistOfBooks(){
         List<Book> books = new ArrayList<Book>();
-        Book b1 = new Book("Marvel",80.99, 3.99, true );
+        Book b1 = new Book("Marvel Forever",80.99, 3.99, true );
         Book b2 = new Book("Marvel Team-Up #1",6.99, 1.99, true );
         Book b3 = new Book("C#",42.99, 32.99, true );
         Book b4 = new Book("Major X #1",33.99, 23.59, true );
@@ -135,6 +135,7 @@ public class LectureMethods {
         User user2 = new User();
         user2.setName("David");
         user2.setLastName("Murphy");
+        user2.setBasket(new ShoppingBasket());
 
         // book with lowest original price
         Book foundBook1 = search.getBookWithLowestPriceById(0, search.sortBookListByPrice(store.getInStock()));
@@ -159,7 +160,9 @@ public class LectureMethods {
 
         System.out.printf("%nThe book with biggest discounted price was added in User1's basket%n");
 
+        System.out.println("User1 has in the basket: ");
 
+        user1.getBasket().printAllBooksInBasket();
 
         System.out.printf("%n-----------test3 addBooksForUser2-------------------%n");
 
@@ -168,20 +171,17 @@ public class LectureMethods {
 
         System.out.println(search.sortBookListByTitleWordsCount(store.getInStock()));
 
- //       user2.getBasket().getBooks().put(foundBook3, 1);
-
-//        System.out.printf("The book with lowest title words was added in User1 basket");
-//
-//        user2.getBasket().changeQuantity(foundBook3, 5);
-//
-//
-//        user1.getBasket().printAllBooksInBasket();
-//
-//        user1.getBasket().printAllBooksInBasket();
 
 
+        user2.getBasket().getBooks().put(foundBook3, 1);
 
+        System.out.printf("The book with lowest title words was added in User1 basket");
 
+       user2.getBasket().changeQuantity(foundBook3, 5);
+
+        System.out.println("User2 has in the basket: ");
+
+        user2.getBasket().printAllBooksInBasket();
 
 
     }

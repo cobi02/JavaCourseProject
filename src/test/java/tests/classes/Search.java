@@ -22,7 +22,11 @@ public class Search {
             if(!sortedMap.containsKey(item.getTitle().length())){
             sortedMap.put(item.getTitle().length(), item);
         }else{
-                sortedMap.put(item.getTitle().length()+1, item);
+                int index =0;
+                while(sortedMap.containsKey(item.getTitle().length()+index)){
+                    index +=1;
+                }
+                sortedMap.put(item.getTitle().length()+index, item);
             }
             }
         List<Book> result = new ArrayList<Book>();
@@ -69,10 +73,14 @@ public class Search {
     public List<Book> sortBookListByTitleWordsCount(List<Book> books) {
         TreeMap<Integer, Book> sortedMap = new TreeMap<Integer, Book>();
         for (Book item : books) {
-            if (!sortedMap.containsKey(item.getTitle().split(" ").length)) {
-                sortedMap.put(item.getTitle().split(" ").length, item);
+            if (!sortedMap.containsKey(item.getTitle().split("\\s+").length)) {
+                sortedMap.put(item.getTitle().split("\\s+").length, item);
             }else {
-                sortedMap.put(item.getTitle().split(" ").length + 1, item);
+                int index =0;
+                while(sortedMap.containsKey(item.getTitle().split("\\s+").length + index)){
+                    index +=1;
+                }
+                sortedMap.put(item.getTitle().split("\\s+").length + index, item);
             }
         }
         List<Book> result = new ArrayList<Book>();
