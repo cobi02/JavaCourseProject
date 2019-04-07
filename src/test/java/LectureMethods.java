@@ -58,23 +58,30 @@ public class LectureMethods {
         addBooksInStore(store, getlistOfBooks());
         Search search = new Search();
 
+        int index = 0;
+        List<Book> sortedList = new ArrayList<Book>();
+        String bookTitle = null;
+
         System.out.printf("%n----------test1 getLowestBookPrice-----------------%n");
         try {
-
-            System.out.println(search.getBookWithLowestPriceById(0, search.sortBookListByPrice(store.getInStock())));
+            index = 0;
+            sortedList =search.sortBookListByPrice(store.getInStock());
+            System.out.println(search.getBookWithLowestPriceById(index, sortedList));
         }catch(IndexOutOfBoundsException ex) {
             System.out.println(ex.getMessage());
         }
 
         System.out.printf("%n----------test1 getBookByTitle--------------------%n");
 
-                 search.printBookByTitle("Solo: A Star Wars Story Adaptation #7",store.getInStock());
+        bookTitle = "Solo: A Star Wars Story Adaptation #7";
+        search.printBookByTitle(bookTitle,store.getInStock());
 
         System.out.printf("%n----------test1 getThirdCheapestBookWithDiscountedPrice--------------------%n");
 
         try{
-
-                System.out.println(search.getBookWithLowestDiscPriceByID(2, search.sortBookListByDiscPrice(store.getInStock())));
+            index = 2;
+            sortedList = search.sortBookListByDiscPrice(store.getInStock());
+            System.out.println(search.getBookWithLowestDiscPriceByID(index, sortedList));
         }catch(IndexOutOfBoundsException ex) {
             System.out.println(ex.getMessage());
         }
@@ -203,8 +210,9 @@ public class LectureMethods {
 
         System.out.printf("%n------------------------------%n");
 
-        user2.getBasket().changeQuantity(foundBook3, 5);
-        System.out.printf("The quantity for the lowest title words book was changed to 5 in the User2 basket%n");
+        int bookQuantity =0;
+        user2.getBasket().changeQuantity(foundBook3, bookQuantity);
+        System.out.printf("The quantity for the lowest title words book was changed to $d in the User2 basket%n", bookQuantity);
         user2.getBasket().printAllBooksInBasket();
 
         System.out.printf("%n------------------------------%n");
