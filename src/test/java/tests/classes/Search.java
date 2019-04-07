@@ -71,6 +71,8 @@ public class Search {
         for (Book item : books) {
             if (!sortedMap.containsKey(item.getTitle().split(" ").length)) {
                 sortedMap.put(item.getTitle().split(" ").length, item);
+            }else {
+                sortedMap.put(item.getTitle().split(" ").length + 1, item);
             }
         }
         List<Book> result = new ArrayList<Book>();

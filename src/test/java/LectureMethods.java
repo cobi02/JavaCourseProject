@@ -61,7 +61,7 @@ public class LectureMethods {
         System.out.printf("%n----------test1 getLowestBookPrice-----------------%n");
         try {
 
-            System.out.println(search.getBookWithLowestPriceById(0, store.getInStock()));
+            System.out.println(search.getBookWithLowestPriceById(0, search.sortBookListByPrice(store.getInStock())));
         }catch(IndexOutOfBoundsException ex) {
             System.out.println(ex.getMessage());
         }
@@ -74,7 +74,7 @@ public class LectureMethods {
 
         try{
 
-                System.out.println(search.getBookWithLowestDiscPriceByID(3, store.getInStock()));
+                System.out.println(search.getBookWithLowestDiscPriceByID(2, search.sortBookListByDiscPrice(store.getInStock())));
         }catch(IndexOutOfBoundsException ex) {
             System.out.println(ex.getMessage());
         }
@@ -145,6 +145,8 @@ public class LectureMethods {
 
         // book with biggest discounted price
         Book foundBook2 = search.getBookWithLowestDiscPriceByID(store.getInStock().size()-1, search.sortBookListByDiscPrice(store.getInStock()));
+        System.out.println(foundBook1);
+
         System.out.println(foundBook2);
 
 
@@ -164,7 +166,7 @@ public class LectureMethods {
         //book with lowest title words count
         Book foundBook3 = search.getBookWithLessTitleWords(search.sortBookListByTitleWordsCount(store.getInStock()));
 
-        System.out.println(foundBook3);
+        System.out.println(search.sortBookListByTitleWordsCount(store.getInStock()));
 
  //       user2.getBasket().getBooks().put(foundBook3, 1);
 
