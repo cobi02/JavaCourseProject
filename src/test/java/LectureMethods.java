@@ -200,6 +200,11 @@ public class LectureMethods {
 
         System.out.printf("%n------------------------------%n");
 
+        System.out.printf("%n--------------Print users----------------%n");
+
+        System.out.println(user1);
+        System.out.println(user2);
+
 
     }
     }

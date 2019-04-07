@@ -42,6 +42,11 @@ public class User {
 
     @Override
     public String toString() {
-        return super.toString();
+        String userData = String.format("%nName: %s%nLast Name: %s%nBooks:",getName(), getLastName());
+        for(Map.Entry<Book, Integer> item: getBasket().getBooks().entrySet()) {
+            userData = userData + String.format("%nBook Name: %s, Price: %.2f, Discounted Price: %.2f, Prime: %b, Count: %d", item.getKey().getTitle(), item.getKey().getPrice(), item.getKey().getDiscPrice(), item.getKey().isPrime(), item.getValue());
+        }
+
+        return userData;
     }
 }
