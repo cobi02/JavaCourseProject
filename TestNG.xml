@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Java Course">
+    <test name = "Java Course Tests">
+
+        <classes>
+            <class name="tests.LectureMethods"></class>
+
+        </classes>
+
+    </test>
+
+</suite>
